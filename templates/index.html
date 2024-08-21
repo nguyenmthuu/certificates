@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Certificate Data</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 20px;
+            }
+
+            .certificate-card {
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                margin: 20px auto;
+                padding: 20px;
+                max-width: 600px;
+                transition: transform 0.2s;
+            }
+
+            .certificate-card:hover {
+                transform: scale(1.02);
+            }
+
+            .certificate-name {
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+                text-decoration: none;
+            }
+
+            .certificate-name:hover {
+                color: #4caf50;
+            }
+
+            .certificate-type,
+            .date-issued {
+                font-size: 14px;
+                color: #666;
+            }
+
+            .date-issued {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Certificate Data</h1>
+        {% for row in data %}
+        <div class="certificate-card">
+            <a
+                href="{{ row['Thumbnail URL'] }}"
+                target="_blank"
+                class="certificate-name"
+            >
+                {{ row['Certificate Name'] }}
+            </a>
+            <div class="certificate-type">{{ row['Certificate Type'] }}</div>
+            <div class="date-issued">Date Issued: {{ row['Date Issued'] }}</div>
+        </div>
+        {% endfor %}
+    </body>
+</html>
