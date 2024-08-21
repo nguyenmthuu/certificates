@@ -1,42 +1,44 @@
 name: Deploy to main branch
 
 on:
-  push:
-    branches:
-      - main  # Chạy khi có thay đổi trên nhánh main
+    schedule:
+        - cron: '0 0 * * *' # Chạy vào lúc 00:00 UTC mỗi ngày
+    push:
+        branches:
+            - main # Chạy khi có thay đổi trên nhánh main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.8'
+            - name: Set up Python
+              uses: actions/setup-python@v2
+              with:
+                  python-version: '3.8'
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+            - name: Install dependencies
+              run: |
+                  pip install -r requirements.txt
 
-    - name: Set up Google Credentials
-      env:
-        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-      run: |
-        echo "$GOOGLE_APPLICATION_CREDENTIALS" > credentials.json
+            - name: Set up Google Credentials
+              env:
+                  GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+              run: |
+                  echo "$GOOGLE_APPLICATION_CREDENTIALS" > credentials.json
 
-    - name: Run script to fetch data and build site
-      run: python app.py
+            - name: Run script to fetch data and build site
+              run: python app.py
 
-    - name: Commit and Push changes to main
-      run: |
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "GitHub Actions"
-        git add index.html  # Thêm file HTML đã tạo vào staging
-        git commit -m "Update index.html with latest data from Google Sheets"
-        git push origin main  # Đẩy thay đổi lên nhánh main
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Commit and Push changes to main
+              run: |
+                  git config --global user.email "github-actions[bot]@users.noreply.github.com"
+                  git config --global user.name "GitHub Actions"
+                  git add index.html  # Thêm file HTML đã tạo vào staging
+                  git commit -m "Update index.html with latest data from Google Sheets"
+                  git push origin main  # Đẩy thay đổi lên nhánh main
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
