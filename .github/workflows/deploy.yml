@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to main branch
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.11'
+        python-version: '3.8'
 
     - name: Install dependencies
       run: |
@@ -31,8 +31,12 @@ jobs:
     - name: Run script to fetch data and build site
       run: python app.py
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}  # Sử dụng GitHub token
-        publish_dir: ./public
+    - name: Commit and Push changes to main
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "GitHub Actions"
+        git add public/index.html  # Thêm file HTML đã tạo vào staging
+        git commit -m "Update index.html with latest data from Google Sheets"
+        git push origin main  # Đẩy thay đổi lên nhánh main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
