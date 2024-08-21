@@ -1,21 +1,26 @@
-from flask import Flask, render_template
+import os
+
 import gspread
+from jinja2 import Template
 from oauth2client.service_account import ServiceAccountCredentials
 
-app = Flask(__name__)
-
-# Thiết lập các thông tin API của Google
-scope = ["https://spreadsheets.google.com/feeds", 'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('./certificates.json', scope)
+# Thiết lập Google Sheets API
+scope = [
+    "https://spreadsheets.google.com/feeds",
+    "https://www.googleapis.com/auth/drive",
+]
+creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
 client = gspread.authorize(creds)
 
-# Kết nối đến Google Sheets và lấy dữ liệu
+# Kết nối với Google Sheets
 sheet = client.open("My Certificates").sheet1
 data = sheet.get_all_records()
 
-@app.route('/')
-def home():
-    return render_template('index.html', data=data)
+# Đọc template HTML và render với dữ liệu mới
+with open("templates/index.html") as file_:
+    template = Template(file_.read())
+    rendered_html = template.render(data=data)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# Lưu file HTML đã được render
+with open("public/index.html", "w") as f:
+    f.write(rendered_html)
