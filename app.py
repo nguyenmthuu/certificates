@@ -22,5 +22,5 @@ with open("templates/index.html") as file_:
     rendered_html = template.render(data=data)
 
 # Lưu file HTML đã được render
-with open("public/index.html", "w") as f:
+with open("index.html", "w") as f:
     f.write(rendered_html)
