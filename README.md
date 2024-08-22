@@ -1,0 +1,18 @@
+# My Certificates
+
+This project is a personal web page that showcases the certificates I have earned. The site is built using Flask and Jinja2, and it dynamically updates data from a Google Sheets document.
+
+Visit the portfolio at: [Ha Trong Nguyen - Certificates](https://nguyenn-04.github.io/My-Certificates/)
+
+## Features
+
+-   **Dynamic Data:** Automatically updated from a Google Sheets document.
+-   **Responsive Design:** Adapts to different screen sizes for an optimal viewing experience.
+-   **Interactive Effects:** Includes animations and hover effects for a more engaging user experience.
+
+## Author
+
+-   **Ha Trong Nguyen**
+-   [GitHub](https://github.com/nguyenn-04)
+-   [LinkedIn](www.linkedin.com/in/nguyenn04)
+-   [Facebook](https://www.facebook.com/trongnguyen2304)

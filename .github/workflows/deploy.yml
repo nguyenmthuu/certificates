@@ -2,10 +2,10 @@ name: Deploy to main branch
 
 on:
     schedule:
-        - cron: '0 0 * * *' # Chạy vào lúc 00:00 UTC mỗi ngày
+        - cron: '0 0 * * *' # Run at midnight every day
     push:
         branches:
-            - main # Chạy khi có thay đổi trên nhánh main
+            - main # Trigger on push to main branch
 
 jobs:
     build:
