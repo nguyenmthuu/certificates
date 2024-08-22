@@ -15,7 +15,7 @@ client = gspread.authorize(creds)
 # Kết nối với Google Sheets
 sheet = client.open("My Certificates").sheet1
 data = sheet.get_all_records()
-data = data.reverse()
+# data = data.reverse()
 
 # Đọc template HTML và render với dữ liệu mới
 with open("templates/index.html") as file_:
