@@ -43,5 +43,6 @@ jobs:
                       git push origin main  # Đẩy thay đổi lên nhánh main
                   else
                       echo "No changes detected in index.html, skipping commit and push."
+                  fi
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
