@@ -16,13 +16,6 @@ client = gspread.authorize(creds)
 sheet = client.open("My Certificates").sheet1
 data = sheet.get_all_records()
 
-# Debug print to check the fetched data
-print("Fetched data:", data)
-
-# Ensure data is not None and is iterable
-if data is None or not isinstance(data, list):
-    raise ValueError("Fetched data is not valid")
-
 # Đảo ngược danh sách dữ liệu
 data.reverse()
 
