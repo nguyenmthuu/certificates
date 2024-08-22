@@ -19,6 +19,7 @@ data = sheet.get_all_records()
 # Đảo ngược danh sách dữ liệu
 data.reverse()
 
+
 # Đọc template HTML và render với dữ liệu mới
 with open("templates/index.html") as file_:
     template = Template(file_.read())
