@@ -12,7 +12,7 @@ Visit the portfolio at: [Ha Trong Nguyen - Certificates](https://nguyenn-04.gith
 
 ## Author
 
--   **Ha Trong Nguyen**
+-   **Ha Trong Nguyen** 
 -   [GitHub](https://github.com/nguyenn-04)
 -   [LinkedIn](www.linkedin.com/in/nguyenn04)
 -   [Facebook](https://www.facebook.com/trongnguyen2304)
