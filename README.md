@@ -2,7 +2,7 @@
 
 This project is a personal web page that showcases the certificates I have earned. The site is built using Flask and Jinja2, and it dynamically updates data from a Google Sheets document.
 
-Visit the portfolio at: [Ha Trong Nguyen - Certificates](https://htrnguyen.github.io/My-Certificates/)
+Visit the portfolio at: [Ha Trong Nguyen - Certificates](https://htrnguyen.github.io/certificates/)
 
 ## Features
 
