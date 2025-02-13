@@ -7,6 +7,9 @@ from google.oauth2.service_account import Credentials
 # Đọc credentials từ biến môi trường (GitHub Secrets hoặc Local)
 service_account_info = json.loads(os.getenv("GOOGLE_CREDENTIALS"))
 
+if service_account_info is None:
+    raise ValueError("❌ Lỗi: GOOGLE_CREDENTIALS không được thiết lập!")
+
 # Xác thực Google Sheets API
 scope = [
     "https://www.googleapis.com/auth/spreadsheets",
