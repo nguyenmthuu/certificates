@@ -1,41 +1,27 @@
 import gspread
-import os
-import json
 from jinja2 import Template
-from google.oauth2.service_account import Credentials
+from oauth2client.service_account import ServiceAccountCredentials
 
-# Đọc credentials từ biến môi trường (GitHub Secrets hoặc Local)
-service_account_info = json.loads(os.getenv("GOOGLE_CREDENTIALS"))
-
-if service_account_info is None:
-    raise ValueError("❌ Lỗi: GOOGLE_CREDENTIALS không được thiết lập!")
-
-# Xác thực Google Sheets API
+# Setup Google Sheets API
 scope = [
-    "https://www.googleapis.com/auth/spreadsheets",
+    "https://spreadsheets.google.com/feeds",
     "https://www.googleapis.com/auth/drive",
 ]
-creds = Credentials.from_service_account_info(service_account_info, scopes=scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
 client = gspread.authorize(creds)
 
-try:
-    # Kết nối Google Sheets
-    sheet = client.open("certificate").sheet1
-    data = sheet.get_all_records()
+# Connect to Google Sheets and get data
+sheet = client.open("certificate").sheet1 
+data = sheet.get_all_records()
 
-    # Đảo ngược dữ liệu để hiển thị chứng chỉ mới nhất
-    data.reverse()
+# Reverse data to show the latest certificate first
+data.reverse()
 
-    # Render HTML template
-    with open("templates/index.html") as file_:
-        template = Template(file_.read())
-        rendered_html = template.render(data=data)
+# Render HTML template 
+with open("templates/index.html") as file_:
+    template = Template(file_.read())
+    rendered_html = template.render(data=data)
 
-    # Lưu kết quả ra file index.html
-    with open("index.html", "w") as f:
-        f.write(rendered_html)
-
-    print("✅ HTML đã được tạo thành công!")
-
-except Exception as e:
-    print(f"❌ Lỗi khi truy cập Google Sheets: {e}")
+# Save rendered HTML to index.html
+with open("index.html", "w") as f:
+    f.write(rendered_html)
