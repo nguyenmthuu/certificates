@@ -10,9 +10,10 @@ Visit the portfolio at: [Ha Trong Nguyen - Certificates](https://htrnguyen.githu
 -   **Responsive Design:** Adapts to different screen sizes for an optimal viewing experience.
 -   **Interactive Effects:** Includes animations and hover effects for a more engaging user experience.
 
-## Author
+## Demo
 
--   **Ha Trong Nguyen**
--   [GitHub](https://github.com/htrnguyen)
--   [LinkedIn](www.linkedin.com/in/htrnguyen)
--   [Facebook](https://www.facebook.com/htrnguyenn)
+![Demo](./images/demo.png)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
