@@ -5,9 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
             name="description"
-            content="A simple HTML template to showcase your certificates"
+            content="A simple webpage to showcase my certificates"
         />
-        <title>My Certificates</title>
+        <title>Ha Trong Nguyen | Certificates Portfolio</title>
         <link
             rel="icon"
             href="https://github.com/htrnguyen.png"
@@ -490,6 +490,45 @@
                 flex: 1; /* Takes up 1 part of the available space */
                 min-width: 120px; /* Minimum width to prevent text wrapping */
                 max-width: 150px; /* Maximum width to maintain proportion */
+            }
+
+            /* Add inside your existing <style> tag */
+
+            /* Text visibility in dark mode */
+            .dark-mode p.text-muted,
+            .dark-mode .text-muted {
+                color: #bbb !important;
+            }
+
+            /* Search and filter styles for dark mode */
+            .dark-mode #certificate-search,
+            .dark-mode #platform-filter {
+                background-color: #2d2d2d;
+                border-color: #444;
+                color: #ffffff;
+            }
+
+            .dark-mode #certificate-search::placeholder {
+                color: #888;
+            }
+
+            .dark-mode #platform-filter option {
+                background-color: #2d2d2d;
+                color: #ffffff;
+            }
+
+            /* Focus states */
+            .dark-mode #certificate-search:focus,
+            .dark-mode #platform-filter:focus {
+                background-color: #2d2d2d;
+                border-color: #66b3ff;
+                color: #ffffff;
+                box-shadow: 0 0 0 0.2rem rgba(102, 179, 255, 0.25);
+            }
+
+            /* Count number color */
+            .dark-mode #certificate-count {
+                color: #66b3ff !important;
             }
         </style>
     </head>
