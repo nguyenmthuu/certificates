@@ -25,6 +25,10 @@
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap"
             rel="stylesheet"
         />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&display=swap"
+            rel="stylesheet"
+        />
         <style>
             /* General Styles */
             html {
@@ -42,7 +46,7 @@
             h4,
             h5,
             h6 {
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Playfair Display', serif;
             }
             .container-wrapper {
                 max-width: 900px;
@@ -55,12 +59,13 @@
                 transition: background-color 0.3s ease;
             }
             .avatar {
-                width: 120px;
-                height: 120px;
+                width: 150px;
+                height: 150px;
                 border-radius: 50%;
-                border: 4px solid #ffffff;
+                border: 4px solid var(--border-color);
                 margin-bottom: 20px;
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
+                box-shadow: 0 0 20px rgba(151, 193, 169, 0.3);
             }
             .avatar:hover {
                 transform: scale(1.1);
@@ -84,13 +89,18 @@
                 color: white;
                 box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
                 background-color: #343a40; /* Add default background color */
+                background: linear-gradient(
+                    135deg,
+                    var(--primary-color),
+                    var(--secondary-color)
+                );
             }
             footer.section-wrapper {
                 padding: 20px;
                 text-align: center;
-                background-color: #343a40;
-                color: white;
-                box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.2);
+                background-color: #f8f9fa;
+                color: #333;
+                box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.1);
             }
             .certificate-container {
                 background-color: #f8f9fa;
@@ -106,10 +116,19 @@
                 transition: all 0.3s ease;
                 padding: 20px;
                 margin-bottom: 20px;
+                border: 1px solid #e9ecef;
+                background-image: linear-gradient(
+                    to bottom right,
+                    #fff,
+                    #f8f9fa
+                );
             }
             .certificate-card:hover {
-                transform: translateY(-8px);
+                transform: translateY(-5px) rotate(1deg);
+                transition: all 0.3s ease;
                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+                border-color: var(--primary-color);
+                box-shadow: 0 12px 24px rgba(127, 160, 184, 0.2);
             }
             .certificate-card a {
                 color: #007bff;
@@ -127,8 +146,8 @@
                 transition: color 0.3s ease, transform 0.3s ease;
             }
             .social-links a:hover {
-                color: #007bff;
-                transform: translateY(-5px);
+                color: var(--primary-color);
+                transform: translateY(-3px) scale(1.1);
             }
             /* Loading Animation */
             #loading {
@@ -216,6 +235,16 @@
                 border-color: #66b3ff;
                 border-right-color: transparent;
             }
+            .dark-mode {
+                background-color: #2a1a2a;
+            }
+            .dark-mode .container-wrapper {
+                background-color: #1f1520;
+            }
+            .dark-mode .certificate-card {
+                background-color: #2a1f2a;
+                border-color: #ff8dc7;
+            }
             /* Responsive Design */
             @media (max-width: 768px) {
                 h1 {
@@ -228,8 +257,8 @@
                     padding: 15px;
                 }
                 .avatar {
-                    width: 80px;
-                    height: 80px;
+                    width: 120px;
+                    height: 120px;
                 }
             }
             /* Navigation Bar Styles */
@@ -468,8 +497,8 @@
                 margin-bottom: 20px;
                 background: linear-gradient(
                     to right,
-                    #007bff 0%,
-                    #007bff var(--progress),
+                    var(--primary-color) 0%,
+                    var(--primary-color) var(--progress),
                     #e9ecef var(--progress),
                     #e9ecef 100%
                 );
@@ -529,6 +558,171 @@
             /* Count number color */
             .dark-mode #certificate-count {
                 color: #66b3ff !important;
+            }
+
+            /* Thay đổi màu sắc chính trong :root */
+            :root {
+                --primary-color: #90a4ae; /* Light Gray Blue */
+                --secondary-color: #eceff1; /* Very Light Gray */
+                --accent-color: #cfd8dc; /* Light Gray */
+                --border-color: #f5f7f8; /* Nearly White */
+                --hover-color: #78909c; /* Medium Gray Blue */
+                --background-color: #fafafa; /* Almost White */
+                --card-background: #ffffff; /* Pure White */
+                --text-color: #455a64; /* Dark Gray Blue */
+            }
+
+            /* Cập nhật màu nền và text cho light mode */
+            body:not(.dark-mode) {
+                background-color: var(--background-color);
+                color: var(--text-color);
+            }
+
+            /* Dark mode với màu nhẹ nhàng hơn */
+            .dark-mode {
+                --primary-color: #78909c; /* Medium Gray Blue */
+                --secondary-color: #37474f; /* Dark Gray Blue */
+                --accent-color: #455a64; /* Medium Dark Gray Blue */
+                --border-color: #546e7a; /* Gray Blue */
+                --background-color: #263238; /* Dark but not too dark */
+                --card-background: #37474f; /* Slightly lighter than background */
+                --text-color: #eceff1; /* Very Light Gray */
+            }
+
+            /* Cập nhật dark mode styles */
+            .dark-mode {
+                background-color: var(--background-color) !important;
+            }
+
+            .dark-mode .container-wrapper {
+                background-color: var(--card-background);
+            }
+
+            .dark-mode .certificate-card {
+                background-color: var(--card-background);
+                border-color: var(--border-color);
+                color: var(--text-color);
+            }
+
+            /* Cập nhật card và container styles */
+            .certificate-container {
+                background-color: var(--background-color);
+            }
+
+            .certificate-card {
+                background-color: var(--card-background);
+                border: 1px solid var(--border-color);
+                background-image: linear-gradient(
+                    to bottom right,
+                    var(--card-background),
+                    var(--background-color)
+                );
+            }
+
+            /* Cập nhật màu icon */
+            .fas.fa-crown,
+            .fas.fa-moon,
+            .fas.fa-sun {
+                color: var(--primary-color) !important;
+            }
+
+            /* Navbar styles */
+            .navbar {
+                background-color: var(--card-background) !important;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            }
+
+            /* Button styles */
+            .btn-primary {
+                background-color: var(--primary-color);
+                border-color: var(--primary-color);
+            }
+
+            .btn-primary:hover {
+                background-color: var(--hover-color);
+                border-color: var(--hover-color);
+            }
+
+            .navbar-brand {
+                font-family: 'Dancing Script', cursive;
+                font-size: 1.8rem;
+            }
+
+            :root {
+                /* Light mode colors - giữ nguyên */
+                --primary-color: #90a4ae; /* Light Gray Blue */
+                --secondary-color: #eceff1; /* Very Light Gray */
+                --accent-color: #cfd8dc; /* Light Gray */
+                --border-color: #f5f7f8; /* Nearly White */
+                --hover-color: #78909c; /* Medium Gray Blue */
+                --background-color: #fafafa; /* Almost White */
+                --card-background: #ffffff; /* Pure White */
+                --text-color: #455a64; /* Dark Gray Blue */
+            }
+
+            /* Dark mode colors - thay đổi sang tông tối hơn */
+            .dark-mode {
+                --primary-color: #607d8b; /* Blue Gray */
+                --secondary-color: #1a1a1a; /* Very Dark Gray */
+                --accent-color: #2c2c2c; /* Dark Gray */
+                --border-color: #333333; /* Dark Gray */
+                --background-color: #121212; /* Nearly Black */
+                --card-background: #1e1e1e; /* Dark Gray */
+                --text-color: #e0e0e0; /* Light Gray */
+                --hover-color: #455a64; /* Darker Blue Gray */
+            }
+
+            /* Cập nhật dark mode styles */
+            .dark-mode {
+                background-color: var(--background-color) !important;
+            }
+
+            .dark-mode .container-wrapper,
+            .dark-mode .section-wrapper,
+            .dark-mode .certificate-container {
+                background-color: var(--card-background);
+            }
+
+            .dark-mode .certificate-card {
+                background-color: var(--accent-color);
+                border-color: var(--border-color);
+                color: var(--text-color);
+                background-image: none;
+            }
+
+            /* Navbar dark mode */
+            .dark-mode .navbar {
+                background-color: var(--card-background) !important;
+            }
+
+            /* Form controls dark mode */
+            .dark-mode .form-control,
+            .dark-mode .form-select {
+                background-color: var(--accent-color);
+                border-color: var(--border-color);
+                color: var(--text-color);
+            }
+
+            .dark-mode .form-control:focus,
+            .dark-mode .form-select:focus {
+                background-color: var(--accent-color);
+                border-color: var(--primary-color);
+                color: var(--text-color);
+            }
+
+            /* Text colors dark mode */
+            .dark-mode p.text-muted,
+            .dark-mode .text-muted {
+                color: #888888 !important;
+            }
+
+            /* Links dark mode */
+            .dark-mode .certificate-card a {
+                color: #78a4ff;
+            }
+
+            .dark-mode .certificate-card a:hover {
+                color: #99bbff;
             }
         </style>
     </head>
@@ -603,16 +797,16 @@
                     ></a>
                     <a
                         href="mailto:nguyen.mthu04@gmail.com"
+                        target="_blank"
                         class="fs-3"
-                        ><i class="fas fa-envelope"></i>
-                    </a>
+                        ><i class="fas fa-envelope"></i
+                    ></a>
                     <a
                         href="https://www.linkedin.com/in/#"
                         target="_blank"
                         class="fs-3"
-                    >
-                        <i class="fab fa-linkedin"></i>
-                    </a>
+                        ><i class="fab fa-linkedin"></i
+                    ></a>
                 </div>
             </header>
 
@@ -624,7 +818,10 @@
                 id="certificates"
                 class="section-wrapper certificate-container fade-in"
             >
-                <h2 class="mb-4">My Certificates</h2>
+                <h2 class="mb-4">
+                    <i class="fas fa-crown"></i>
+                    My Certificates
+                </h2>
                 <!-- Add this after the certificates heading -->
                 <p class="text-muted mb-4">
                     Total Certificates: <span id="certificate-count">0</span>
@@ -661,7 +858,6 @@
                         </p>
                     </div>
                 </div>
-                
                 
             </section>
 
