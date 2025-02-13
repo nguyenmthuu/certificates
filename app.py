@@ -11,7 +11,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", sco
 client = gspread.authorize(creds)
 
 # Connect to Google Sheets and get data
-sheet = client.open("certificate").sheet1
+sheet = client.open("certificate").sheet1 
 data = sheet.get_all_records()
 
 # Reverse data to show the latest certificate first
